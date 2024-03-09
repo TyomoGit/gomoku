@@ -15,6 +15,13 @@ impl SimpleGomokuGame {
         }
     }
 
+    pub fn with_size(size: usize) -> Self {
+        Self {
+            board: Box::new(ArrayBasedBoard::with_size(size)),
+            turn: Stone::Black,
+        }
+    }
+
     pub fn put_stone(&mut self, x: usize, y: usize) -> Result<()> {
         let result = self.board.put_stone(x, y, self.turn);
         self.take_turn();
